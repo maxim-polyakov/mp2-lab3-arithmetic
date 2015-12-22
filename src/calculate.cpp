@@ -5,7 +5,7 @@ using namespace std;
 
 
 
-string note(string exp){
+string postfix_note(string exp){
 
 	Stack<char> opStack;
 	Stack<char> trackStack;
@@ -80,8 +80,10 @@ double Calculate(string exp)
 
 	for (int i = 0; i < exp.length(); i++){
 		buff = exp[i];
-		if (((buff >= 0x42) && (buff <= 0x6A))
-			|| ((buff >= 0x62) && (buff <= 0x6A))){
+		if (exp[exp.length() - 1] == '=')
+			val[exp[0]] = 0;
+		if (((buff >= 0x41) && (buff <= 0x5A))
+			|| ((buff >= 0x61) && (buff <= 0x7A))){
 			if (!val.count(buff)){
 				cout << '\t' << buff << " = ";
 				cin >> val[buff];
@@ -89,7 +91,6 @@ double Calculate(string exp)
 			trackStack.Push(val[buff]);
 			continue;
 		}
-
 		if (trackStack.IsEmpty())
 			throw "нет совпадения с числом операндов";
 		rightOperand = trackStack.Put();

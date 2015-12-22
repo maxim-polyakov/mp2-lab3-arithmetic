@@ -167,7 +167,7 @@ void List<Type>::InsertBefore(Type key, Node<Type> *elem)
 {
 	if (!pFirst) throw "Список пуст";
 	Node<Type> *point;
-	Node<Type> *pPrev = searchPrev(key, point);
+	Node<Type> *pPrev = SearchPrev(key, point);
 	if ((pPrev == 0) && (pFirst->key != key))
 		throw "Не установлен ключ вставки";
 
@@ -183,7 +183,7 @@ template <class Type>
 void List<Type>::InsertAfter(Type key, Node<Type> *elem)
 {
 	if (!pFirst) throw "Список пуст";
-	Node<Type> *point = search(key);
+	Node<Type> *point = Search(key);
 	if (point == 0)
 		throw "Не установлен ключ вставки";
 	elem->pNext = point->pNext;

@@ -7,6 +7,6 @@
 
 using namespace std;
 
-string note(string);
+string postfix_note(string);
 
 double Calculate(string);
